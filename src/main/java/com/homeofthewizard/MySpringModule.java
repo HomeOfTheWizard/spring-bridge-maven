@@ -4,13 +4,15 @@ import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Model;
 import org.apache.maven.model.io.xpp3.MavenXpp3Writer;
 import org.apache.maven.shared.invoker.*;
-import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.core.env.PropertySource;
 import org.springframework.guice.module.SpringModule;
 
 import javax.inject.Named;
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
