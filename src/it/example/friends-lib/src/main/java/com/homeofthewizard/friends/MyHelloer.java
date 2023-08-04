@@ -1,4 +1,4 @@
-package com.homeofthewizard;
+package com.homeofthewizard.friends;
 
 public interface MyHelloer {
 
