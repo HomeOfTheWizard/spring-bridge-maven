@@ -24,8 +24,10 @@ public class MyMojo extends AbstractMojo {
 }
 ```
 
-You want to use a class that implements Helloer interface, coming from a spring library.    
-You can add this extension in the `extensions.xml` file located in your maven config folder `.mvn`. Like below.    
+You want to use a class that implements Helloer interface, coming from a spring library.
+
+#### 1. Add the extension
+You should add this extension in the `extensions.xml` file located in your maven config folder `.mvn`. Like below.    
 ```xml
 <extensions xmlns="http://maven.apache.org/EXTENSIONS/1.0.0"...>
 	<extension>
@@ -37,7 +39,8 @@ You can add this extension in the `extensions.xml` file located in your maven co
 ```
 You can see how to use extensions in more details [here](https://maven.apache.org/guides/mini/guide-using-extensions.html).  
   
-Then add a configuration file like below.
+#### 2. Add a configuration file
+Create one like below  
 ```properties
 spring-ext.groupId=com.homeofthewizard
 spring-ext.artifactId=friends-lib
@@ -57,5 +60,31 @@ You can change the path if you want, but you will need to precise the path via a
 ```shell
 mvn .... -Dspring-ext.configFilePath=/home/user/workspace/myPlugin/spring-ext.properties
 ```
+  
+#### 3. Add the extension as a dependency of your plugin
+This is necessary for classpath sharing.  
+In your plugin's `pom.xml`  
+```xml
+    ...
+    <dependencies>
+        ...
+        <!-- the extension -->
+        <dependency>
+            <groupId>com.homeofthewizard</groupId>
+            <artifactId>demo-spring-maven-extension</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!-- our spring library -->
+        <dependency>
+            <groupId>com.people</groupId>
+            <artifactId>friends-lib</artifactId>
+            <version>1.0</version>
+        </dependency>
+        ...
+    </dependencies>
+    ...
+```
+Now you can build your plugin.
 
-That is it! you are good to go. When you build your plugin, the Bean will be automatically injected into your plugin.  
+#### **That is it!** You are good to go :rocket:   
+When you run your plugin, the Bean will be automatically injected into it.  
