@@ -24,7 +24,7 @@ import java.util.*;
 class PropertyBasedConfigurableSpringModule extends SpringModule {
 
     private final static String SPRING_EXT = "spring-ext";
-    private final static String CONFIG_FILE_PATH = "configFilePath";
+    private final static String CONFIG_FILE_PATH = SPRING_EXT + "." +"configFilePath";
     private final static String CONTEXT_CONFIG_CLASS = SPRING_EXT + "." + "contextConfigClass";
     private final static String SPRING_MAVEN_EXTENSION_PROPERTIES = "SpringMavenExtensionProperties";
     private final static String DEFAULT_PROPERTIES_FILE_PATH = "/src/main/resources/" + SPRING_EXT + ".properties";

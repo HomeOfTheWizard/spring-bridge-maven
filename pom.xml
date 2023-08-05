@@ -123,12 +123,6 @@
                         <goals>
                             <goal>install</goal>
                         </goals>
-                        <configuration>
-                            <extraArtifacts>
-                                <extraArtifact>
-                                    com.homeofthewizard:demo-spring-maven-extension:${project.version}:maven-plugin</extraArtifact>
-                            </extraArtifacts>
-                        </configuration>
                     </execution>
                     <execution>
                         <id>run-integration-test</id>
@@ -138,7 +132,7 @@
                         </goals>
                         <configuration>
                             <properties>
-                                <configFilePath>${project.build.directory}/it/example/plugin/src/main/resources/spring-ext.properties</configFilePath>
+                                <spring-ext.configFilePath>${project.build.directory}/it/example/plugin/src/main/resources/spring-ext.properties</spring-ext.configFilePath>
                             </properties>
                             <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
                             <streamLogs>true</streamLogs>
