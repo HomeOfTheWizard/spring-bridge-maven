@@ -1,4 +1,4 @@
-﻿# demo-spring-maven-extension
+﻿# spring-bridge-maven-extension
 
 This project is a POC for a maven extension that allows injecting Spring Beans into maven's DI system, [Sisu](https://eclipse.dev/sisu/).   
 It is intended to help maven plugin developments by allowing the usage of spring libraries.  
@@ -32,7 +32,7 @@ You should add this extension in the `extensions.xml` file located in your maven
 <extensions xmlns="http://maven.apache.org/EXTENSIONS/1.0.0"...>
 	<extension>
 		<groupId>com.homeofthewizard</groupId>
-		<artifactId>demo-spring-maven-extension</artifactId>
+		<artifactId>spring-bridge-maven-extension</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</extension>
 </extensions>
@@ -71,7 +71,7 @@ In your plugin's `pom.xml`
         <!-- the extension -->
         <dependency>
             <groupId>com.homeofthewizard</groupId>
-            <artifactId>demo-spring-maven-extension</artifactId>
+            <artifactId>spring-bridge-maven-extension</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <!-- our spring library -->
