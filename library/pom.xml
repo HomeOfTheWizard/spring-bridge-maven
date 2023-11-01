@@ -21,11 +21,6 @@
             <version>3.9.1</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.apache.maven.shared</groupId>
-            <artifactId>maven-invoker</artifactId>
-            <version>3.2.0</version>
-        </dependency>
 
         <!-- JSR 330 annotation -->
         <dependency>
