@@ -123,6 +123,12 @@
                         <goals>
                             <goal>install</goal>
                         </goals>
+                        <configuration>
+                            <extraArtifacts>
+                                <extraArtifact>
+                                    com.homeofthewizard:spring-bridge-maven-extension:${project.version}:maven-plugin</extraArtifact>
+                            </extraArtifacts>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>run-integration-test</id>
