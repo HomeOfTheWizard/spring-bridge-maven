@@ -83,7 +83,7 @@
                         <configuration>
                             <extraArtifacts>
                                 <extraArtifact>com.homeofthewizard:spring-bridge-maven-extension:${project.version}:maven-plugin</extraArtifact>
-                                <extraArtifact>com.homeofthewizard:spring-bridge-maven-plugin:${project.version}:maven-plugin</extraArtifact>
+                                <extraArtifact>com.homeofthewizard:spring-bridge-maven-library:${project.version}:maven-plugin</extraArtifact>
                                 </extraArtifacts>
                         </configuration>
                     </execution>
