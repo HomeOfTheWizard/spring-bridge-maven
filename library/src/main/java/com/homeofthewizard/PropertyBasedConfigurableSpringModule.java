@@ -5,7 +5,6 @@ import java.util.Properties;
 
 import javax.inject.Named;
 
-import org.apache.maven.shared.invoker.MavenInvocationException;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.core.env.PropertySource;
 import org.springframework.core.io.ClassPathResource;
@@ -45,7 +44,7 @@ class PropertyBasedConfigurableSpringModule extends SpringModule {
     }
 
     public PropertyBasedConfigurableSpringModule()
-            throws ClassNotFoundException, IOException, MavenInvocationException {
+            throws ClassNotFoundException, IOException {
         super(new SpringApplicationBuilder()
                 .sources(loadSpringConfigClass())
                 .initializers(context -> context
@@ -56,7 +55,7 @@ class PropertyBasedConfigurableSpringModule extends SpringModule {
     }
 
     static private Class<?> loadSpringConfigClass()
-            throws ClassNotFoundException, IOException, MavenInvocationException {
+            throws ClassNotFoundException, IOException {
         var classLoader = PropertyBasedConfigurableSpringModule.class.getClassLoader();
         return classLoader.loadClass(properties.getProperty(CONTEXT_CONFIG_CLASS));
     }
