@@ -46,7 +46,7 @@
         <!-- extension dependencies -->
         <dependency>
             <groupId>com.homeofthewizard</groupId>
-            <artifactId>spring-bridge-maven-extension</artifactId>
+            <artifactId>spring-bridge-maven-library</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
