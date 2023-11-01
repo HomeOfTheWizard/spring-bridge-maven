@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.homeofthewizard</groupId>
-    <artifactId>spring-bridge-maven-plugin</artifactId>
+    <artifactId>spring-bridge-maven-library</artifactId>
 
     <parent>
         <groupId>com.homeofthewizard</groupId>
