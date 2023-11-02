@@ -94,9 +94,6 @@
                             <goal>run</goal>
                         </goals>
                         <configuration>
-                            <properties>
-                                <spring-ext.configFilePath>${project.build.directory}/it/example/plugin/src/main/resources/spring-ext.properties</spring-ext.configFilePath>
-                            </properties>
                             <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
                             <streamLogs>true</streamLogs>
                         </configuration>
