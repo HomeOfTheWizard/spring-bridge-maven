@@ -27,7 +27,7 @@ public class MyMojo extends AbstractMojo {
 You want to use a class that implements Helloer interface, coming from a spring library.
 
 #### 1. Add the extension
-You should add this extension in the `extensions.xml` file located in your maven config folder `.mvn`. Like below.    
+You should add this extension in the `extensions.xml` file located in your maven config folder `.mvn` of your application (the one that uses the custom plugin). Like below.    
 ```xml
 <extensions xmlns="http://maven.apache.org/EXTENSIONS/1.0.0"...>
 	<extension>
@@ -40,27 +40,23 @@ You should add this extension in the `extensions.xml` file located in your maven
 You can see how to use extensions in more details [here](https://maven.apache.org/guides/mini/guide-using-extensions.html).  
   
 #### 2. Add a configuration file
-Create one like below  
+In the custom plugin, create `spring.factories` like below (in `src/main/resources/META-INF` folder) 
 ```properties
-spring-ext.groupId=com.homeofthewizard
-spring-ext.artifactId=friends-lib
-spring-ext.version=1.0-SNAPSHOT
-spring-ext.contextConfigClass=com.homeofthewizard.friends.MySpringConfiguration
+com.homeofthewizard.SpringBootPlugin=com.homeofthewizard.friends.MySpringConfiguration
+```
+As you can guess, this defines the configuration sources for the the spring application context to be used in the plugin. You can specify a class with `@EnableAutoConfiguration` annotation, or just a plain `@Configuration` class.
 
+Also create an `application.properties` file like below
+```properties
 friend.name=Bob
 ```
 
-As you can guess, the first tree properties are for defining the spring library to be used.   
-The forth is the spring configuration class that will be used to initialise the spring context, and create the beans we need.  
+This is the spring configuration class that will be used to initialise the spring context, and create the beans we need.  
 :warning: pay attention to the prefix used for those properties.  
 The rest of the properties are specific to the spring library we use. Here our library takes a property as parameter to create our `Friend` Bean.  
 
-Place it under `src/main/resources` folder. this is the default place the extension will look up.    
-You can change the path if you want, but you will need to precise the path via a system variable when running maven commands.
-```shell
-mvn .... -Dspring-ext.configFilePath=/home/user/workspace/myPlugin/spring-ext.properties
-```
-  
+Place these under `src/main/resources` folder. This is the default place the extension will look up.    
+
 #### 3. Add the extension as a dependency of your plugin
 This is necessary for classpath sharing.  
 In your plugin's `pom.xml`  
@@ -68,10 +64,10 @@ In your plugin's `pom.xml`
     ...
     <dependencies>
         ...
-        <!-- the extension -->
+        <!-- the extension library -->
         <dependency>
             <groupId>com.homeofthewizard</groupId>
-            <artifactId>spring-bridge-maven-extension</artifactId>
+            <artifactId>spring-bridge-maven-library</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <!-- our spring library -->
