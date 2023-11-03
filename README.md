@@ -39,12 +39,10 @@ You should add this extension in the `extensions.xml` file located in your maven
 ```
 You can see how to use extensions in more details [here](https://maven.apache.org/guides/mini/guide-using-extensions.html).  
   
-#### 2. Add a configuration file
-In the custom plugin, create `spring.factories` like below (in `src/main/resources/META-INF` folder) 
-```properties
-com.homeofthewizard.SpringBootPlugin=com.homeofthewizard.friends.MySpringConfiguration
-```
-As you can guess, this defines the configuration sources for the the spring application context to be used in the plugin. You can specify a class with `@EnableAutoConfiguration` annotation, or just a plain `@Configuration` class.
+#### 2. Add an annotation
+Somewhere in your plugin add `@SpringBootPlugin` pointing to the main configuration class of your spring library. As you can guess, this defines the configuration sources for the the spring application context to be used in the plugin. You can specify a class with `@EnableAutoConfiguration` annotation, or just a plain `@Configuration` class. There is an APT processor in the library that writes these out to `spring.factories` for use at runtime.
+
+#### 3. Add a configuration file
 
 Also create an `application.properties` file like below
 ```properties
@@ -55,9 +53,9 @@ This is the spring configuration class that will be used to initialise the sprin
 :warning: pay attention to the prefix used for those properties.  
 The rest of the properties are specific to the spring library we use. Here our library takes a property as parameter to create our `Friend` Bean.  
 
-Place these under `src/main/resources` folder. This is the default place the extension will look up.    
+Place this under `src/main/resources` folder. This is the default place Spring Boot will look it up as normal.
 
-#### 3. Add the extension as a dependency of your plugin
+#### 4. Add the extension as a dependency of your plugin
 This is necessary for classpath sharing.  
 In your plugin's `pom.xml`  
 ```xml
