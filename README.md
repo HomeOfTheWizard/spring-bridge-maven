@@ -3,8 +3,8 @@
 This project is a POC for a maven extension that allows injecting Spring Beans into maven's DI system, [Sisu](https://eclipse.dev/sisu/).   
 It is intended to help maven plugin developments by allowing the usage of spring libraries.  
 It uses [Spring-Guice](https://github.com/spring-projects/spring-guice) to brigde the two systems, and allows the usage of spring beans via [JSR-330](https://maven.apache.org/maven-jsr330.html) annotations within the plugin in development.   
-To see how to use JSR-330 annotations, this [wiki](https://github.com/eclipse/sisu.plexus/wiki/Plexus-to-JSR330) is a good start.  
-:warning: Beware, there is a faulty [declaration](https://github.com/eclipse/sisu.plexus/issues/35) on this wiki about plugins. Hence the usage of an extension instead of a plugin to do this bridge.  
+To see how to use JSR-330 annotations, this [documentation](https://eclipse.github.io/sisu.plexus/) is a good start.  
+:warning: Beware, there is an important [declaration](https://github.com/eclipse/sisu.plexus/issues/35) on this wiki about plugins. Hence the usage of an extension instead of a plugin to do this bridge.  
 
 ## How to use it ?
 
@@ -48,10 +48,7 @@ Also create an `application.properties` file like below
 ```properties
 friend.name=Bob
 ```
-
-This is the spring configuration class that will be used to initialise the spring context, and create the beans we need.  
-:warning: pay attention to the prefix used for those properties.  
-The rest of the properties are specific to the spring library we use. Here our library takes a property as parameter to create our `Friend` Bean.  
+Here our library takes a property as parameter to create our `Friend` Bean.  
 
 Place this under `src/main/resources` folder. This is the default place Spring Boot will look it up as normal.
 
