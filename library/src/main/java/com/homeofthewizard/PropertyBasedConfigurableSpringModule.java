@@ -23,6 +23,7 @@ class PropertyBasedConfigurableSpringModule extends SpringModule {
     static private Class<?>[] loadSpringConfigClass()
             throws ClassNotFoundException, IOException {
         var classLoader = PropertyBasedConfigurableSpringModule.class.getClassLoader();
+        System.out.println("TOTO!!! "+classLoader);
         List<String> names = SpringFactoriesLoader.loadFactoryNames(SpringBootPlugin.class, classLoader);
         List<Class<?>> types = new ArrayList<>();
         for (String name : names) {
