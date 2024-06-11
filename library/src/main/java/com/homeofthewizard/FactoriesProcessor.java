@@ -87,17 +87,17 @@ public final class FactoriesProcessor implements Processor {
 	}
 
 	public Iterable<? extends Completion> getCompletions(final Element element, final AnnotationMirror annotation,
-			final ExecutableElement member, final String userText) {
+														 final ExecutableElement member, final String userText) {
 		return Collections.emptySet();
 	}
 
-	final synchronized void flushIndex() {
+	synchronized void flushIndex() {
 		for (final Entry<Object, Set<String>> entry : index.entrySet()) {
 			writeTable(entry.getKey(), entry.getValue());
 		}
 	}
 
-	final synchronized void addClassToIndex(final Object anno, final Object clazz) {
+	synchronized void addClassToIndex(final Object anno, final Object clazz) {
 		Set<String> table = index.get(anno);
 		if (null == table) {
 			table = readTable(anno);
@@ -121,11 +121,11 @@ public final class FactoriesProcessor implements Processor {
 
 	private void writeTable(Object key, Set<String> value) {
 		Properties properties = getFactories();
-		String existing = "";
+		StringBuilder existing = new StringBuilder();
 		for (String s : value) {
-			existing += (existing.length() > 0 ? "," : "") + s;
+			existing.append((!existing.isEmpty()) ? "," : "").append(s);
 		}
-		properties.setProperty(key.toString(), existing);
+		properties.setProperty(key.toString(), existing.toString());
 		try (Writer writer = getWriter(INDEX_FOLDER + "spring.factories")) {
 			properties.store(writer, "Updated by APT processor");
 		} catch (IOException e) {
@@ -143,21 +143,21 @@ public final class FactoriesProcessor implements Processor {
 		return properties;
 	}
 
-	protected void info(final String msg) {
+	private void info(final String msg) {
 		environment.getMessager().printMessage(Diagnostic.Kind.NOTE, msg);
 	}
 
-	protected void warn(final String msg) {
+	private void warn(final String msg) {
 		environment.getMessager().printMessage(Diagnostic.Kind.WARNING, msg);
 	}
 
-	protected Reader getReader(final String path)
+	private Reader getReader(final String path)
 			throws IOException {
 		final FileObject file = environment.getFiler().getResource(StandardLocation.CLASS_OUTPUT, "", path);
 		return new InputStreamReader(file.openInputStream(), "UTF-8");
 	}
 
-	protected Writer getWriter(final String path)
+	private Writer getWriter(final String path)
 			throws IOException {
 		FileObject resource = environment.getFiler().createResource(StandardLocation.CLASS_OUTPUT, "", path);
 		new File(resource.toUri()).getParentFile().mkdirs();
