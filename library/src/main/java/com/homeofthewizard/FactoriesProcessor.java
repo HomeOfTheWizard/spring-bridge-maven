@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -34,7 +35,7 @@ public final class FactoriesProcessor implements Processor {
 
 	static final String PLUGIN = "com.homeofthewizard.SpringBootPlugin";
 
-	private final Map<Object, Set<String>> index = new LinkedHashMap<Object, Set<String>>();
+	private final Map<Object, Set<String>> index = new LinkedHashMap<>();
 
 	private ProcessingEnvironment environment;
 
@@ -48,7 +49,7 @@ public final class FactoriesProcessor implements Processor {
 				if (elem.getKind().isClass()) {
 					for (final AnnotationMirror mirror : elem.getAnnotationMirrors()) {
 						if (PLUGIN.equals(mirror.getAnnotationType().toString())) {
-							for (final Entry<? extends ExecutableElement, ? extends Object> entry : mirror
+							for (final Entry<? extends ExecutableElement, ?> entry : mirror
 									.getElementValues().entrySet()) {
 								if ("value".equals(entry.getKey().getSimpleName().toString())) {
 									@SuppressWarnings("unchecked")
@@ -129,7 +130,7 @@ public final class FactoriesProcessor implements Processor {
 		try (Writer writer = getWriter(INDEX_FOLDER + "spring.factories")) {
 			properties.store(writer, "Updated by APT processor");
 		} catch (IOException e) {
-			// ignore
+			warn("could not update spring.factories for " + PLUGIN + " annotated classes.");
 		}
 	}
 
@@ -138,7 +139,7 @@ public final class FactoriesProcessor implements Processor {
 		try (Reader reader = getReader(INDEX_FOLDER + "spring.factories")) {
 			properties.load(reader);
 		} catch (IOException e) {
-			// ignore
+			warn("could not find spring.factories file in classpath.");
 		}
 		return properties;
 	}
@@ -151,10 +152,14 @@ public final class FactoriesProcessor implements Processor {
 		environment.getMessager().printMessage(Diagnostic.Kind.WARNING, msg);
 	}
 
+	private void error(final String msg) {
+		environment.getMessager().printMessage(Diagnostic.Kind.ERROR, msg);
+	}
+
 	private Reader getReader(final String path)
 			throws IOException {
 		final FileObject file = environment.getFiler().getResource(StandardLocation.CLASS_OUTPUT, "", path);
-		return new InputStreamReader(file.openInputStream(), "UTF-8");
+		return new InputStreamReader(file.openInputStream(), StandardCharsets.UTF_8);
 	}
 
 	private Writer getWriter(final String path)

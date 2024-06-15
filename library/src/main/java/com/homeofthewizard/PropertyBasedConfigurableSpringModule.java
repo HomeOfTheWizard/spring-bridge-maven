@@ -1,21 +1,19 @@
 package com.homeofthewizard;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.inject.Named;
-
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.support.SpringFactoriesLoader;
 import org.springframework.guice.module.SpringModule;
 
+import javax.inject.Named;
+import java.util.ArrayList;
+import java.util.List;
+
 @Named
 class PropertyBasedConfigurableSpringModule extends SpringModule {
 
     public PropertyBasedConfigurableSpringModule()
-            throws ClassNotFoundException, IOException {
+            throws ClassNotFoundException {
         super(new SpringApplicationBuilder()
                 .resourceLoader(new DefaultResourceLoader(PropertyBasedConfigurableSpringModule.class.getClassLoader()))
                 .sources(loadSpringConfigClass())
