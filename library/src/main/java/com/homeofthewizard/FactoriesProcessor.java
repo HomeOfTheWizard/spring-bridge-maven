@@ -130,7 +130,7 @@ public final class FactoriesProcessor implements Processor {
 		try (Writer writer = getWriter(INDEX_FOLDER + "spring.factories")) {
 			properties.store(writer, "Updated by APT processor");
 		} catch (IOException e) {
-			warn("could not update spring.factories for " + PLUGIN + " annotated classes.");
+			error("could not update spring.factories for " + PLUGIN + " annotated classes.");
 		}
 	}
 
@@ -139,7 +139,7 @@ public final class FactoriesProcessor implements Processor {
 		try (Reader reader = getReader(INDEX_FOLDER + "spring.factories")) {
 			properties.load(reader);
 		} catch (IOException e) {
-			warn("could not find spring.factories file in classpath.");
+			//Ignore
 		}
 		return properties;
 	}
