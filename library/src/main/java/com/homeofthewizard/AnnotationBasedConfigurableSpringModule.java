@@ -10,19 +10,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Named
-class PropertyBasedConfigurableSpringModule extends SpringModule {
+class AnnotationBasedConfigurableSpringModule extends SpringModule {
 
-    public PropertyBasedConfigurableSpringModule()
+    public AnnotationBasedConfigurableSpringModule()
             throws ClassNotFoundException {
         super(new SpringApplicationBuilder()
-                .resourceLoader(new DefaultResourceLoader(PropertyBasedConfigurableSpringModule.class.getClassLoader()))
+                .resourceLoader(new DefaultResourceLoader(AnnotationBasedConfigurableSpringModule.class.getClassLoader()))
                 .sources(loadSpringConfigClass())
                 .run());
     }
 
     static private Class<?>[] loadSpringConfigClass()
             throws ClassNotFoundException {
-        var classLoader = PropertyBasedConfigurableSpringModule.class.getClassLoader();
+        var classLoader = AnnotationBasedConfigurableSpringModule.class.getClassLoader();
         List<String> names = SpringFactoriesLoader.loadFactoryNames(SpringBootPlugin.class, classLoader);
         List<Class<?>> types = new ArrayList<>();
         for (String name : names) {

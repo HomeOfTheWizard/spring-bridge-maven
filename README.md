@@ -1,6 +1,6 @@
-﻿# spring-bridge-maven-extension
+﻿# spring-bridge-maven
 
-This project is a POC for a maven extension that allows injecting Spring Beans into maven's DI system, [Sisu](https://eclipse.dev/sisu/).   
+This project is library that allows injecting Spring Beans into maven's DI system, [Sisu](https://eclipse.dev/sisu/).   
 It is intended to help maven plugin developments by allowing the usage of spring libraries.  
 It uses [Spring-Guice](https://github.com/spring-projects/spring-guice) to brigde the two systems, and allows the usage of spring beans via [JSR-330](https://maven.apache.org/maven-jsr330.html) annotations within the plugin in development.   
 To see how to use JSR-330 annotations, this [documentation](https://eclipse-sisu.github.io/sisu-project/plexus/index.html) is a good start.  
@@ -32,7 +32,7 @@ You should add this extension in the `extensions.xml` file located in your maven
 <extensions xmlns="http://maven.apache.org/EXTENSIONS/1.0.0"...>
 	<extension>
 		<groupId>com.homeofthewizard</groupId>
-		<artifactId>spring-bridge-maven-extension</artifactId>
+		<artifactId>guice-exporter-maven-extension</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</extension>
 </extensions>
@@ -59,13 +59,13 @@ In your plugin's `pom.xml`
     ...
     <dependencies>
         ...
-        <!-- the extension library -->
+        <!-- the bridge library -->
         <dependency>
             <groupId>com.homeofthewizard</groupId>
-            <artifactId>spring-bridge-maven-library</artifactId>
+            <artifactId>spring-bridge-maven</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <!-- our spring library -->
+        <!-- your spring library -->
         <dependency>
             <groupId>com.people</groupId>
             <artifactId>friends-lib</artifactId>

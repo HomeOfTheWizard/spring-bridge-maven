@@ -7,18 +7,18 @@
 	<parent>
 		<groupId>com.homeofthewizard</groupId>
 		<artifactId>example-spring-extension</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>1.0.0-alpha</version>
 	</parent>
 
 	<artifactId>demo</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0.0-alpha</version>
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>com.homeofthewizard</groupId>
 				<artifactId>my-maven-plugin</artifactId>
-				<version>1.0-SNAPSHOT</version>
+				<version>1.0.0-alpha</version>
 				<executions>
 					<execution>
 						<id>run</id>

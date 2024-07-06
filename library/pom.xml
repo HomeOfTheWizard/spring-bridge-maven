@@ -6,11 +6,11 @@
 
     <parent>
         <groupId>com.homeofthewizard</groupId>
-        <artifactId>spring-bridge-maven-extension-parent</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <artifactId>spring-bridge-maven-parent</artifactId>
+        <version>1.0.0-alpha</version>
     </parent>
 
-    <artifactId>spring-bridge-maven-library</artifactId>
+    <artifactId>spring-bridge-maven</artifactId>
 
     <dependencies>
         <!-- maven -->
@@ -61,7 +61,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
                 <executions>
                     <execution>
                         <id>default-compile</id>
@@ -79,33 +78,9 @@
                 </executions>
             </plugin>
             <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.3.1</version>
-                <executions>
-                    <execution>
-                        <id>copy-resources</id>
-                        <phase>pre-integration-test</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${basedir}/.mvn</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>.</directory>
-                                    <includes>
-                                        <include>extensions.xml</include>
-                                    </includes>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-invoker-plugin</artifactId>
-                <version>3.6.1</version>
+                <version>3.7.0</version>
                 <configuration>
                     <settingsFile>src/it/settings.xml</settingsFile>
                     <localRepositoryPath>${project.build.directory}/local-repo</localRepositoryPath>
@@ -119,8 +94,8 @@
                         </goals>
                         <configuration>
                             <extraArtifacts>
-                                <extraArtifact>com.homeofthewizard:spring-bridge-maven-extension:${project.version}:maven-plugin</extraArtifact>
-                                <extraArtifact>com.homeofthewizard:spring-bridge-maven-library:${project.version}:maven-plugin</extraArtifact>
+                                <extraArtifact>com.homeofthewizard:guice-exporter-maven-extension:${project.version}:maven-plugin</extraArtifact>
+                                <extraArtifact>com.homeofthewizard:spring-bridge-maven:${project.version}:maven-plugin</extraArtifact>
                             </extraArtifacts>
                         </configuration>
                     </execution>
@@ -133,30 +108,6 @@
                         <configuration>
                             <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
                             <streamLogs>true</streamLogs>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>3.3.1</version>
-                <executions>
-                    <execution>
-                        <id>clean-integration-test</id>
-                        <phase>post-integration-test</phase>
-                        <goals>
-                            <goal>clean</goal>
-                        </goals>
-                        <configuration>
-                            <excludeDefaultDirectories>true</excludeDefaultDirectories>
-                            <filesets>
-                                <fileset>
-                                    <directory>.mvn</directory>
-                                    <includes>
-                                        <include>extensions.xml</include>
-                                    </includes>
-                                </fileset>
-                            </filesets>
                         </configuration>
                     </execution>
                 </executions>
