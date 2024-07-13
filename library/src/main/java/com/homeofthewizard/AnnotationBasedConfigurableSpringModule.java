@@ -19,7 +19,7 @@ class AnnotationBasedConfigurableSpringModule extends SpringModule {
     public AnnotationBasedConfigurableSpringModule()
             throws ClassNotFoundException {
         super(new SpringApplicationBuilder()
-                .resourceLoader(new DefaultResourceLoader())
+                .resourceLoader(new DefaultResourceLoader(classLoader))
                 .sources(loadSpringConfigClass())
                 .properties(loadApplicationProperties())
                 .run());
