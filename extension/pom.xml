@@ -4,12 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>guice-exporter-maven-extension</artifactId>
-
     <parent>
         <groupId>com.homeofthewizard</groupId>
         <artifactId>spring-bridge-maven-parent</artifactId>
         <version>1.0.0-alpha</version>
     </parent>
+
+    <artifactId>guice-exporter-maven-extension</artifactId>
+    <name>Guice API Exporter Extension</name>
+    <description>A Maven Core extension to expose the Guice api to plugins</description>
+    <url>https://github.com/homeofthewizard/spring-bridge-maven</url>
 
 </project>

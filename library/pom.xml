@@ -11,6 +11,9 @@
     </parent>
 
     <artifactId>spring-bridge-maven</artifactId>
+    <name>Spring Bridge Maven Library</name>
+    <description>A Library that allows using Spring Libraries in Maven plugins</description>
+    <url>https://github.com/homeofthewizard/spring-bridge-maven</url>
 
     <dependencies>
         <!-- maven -->
