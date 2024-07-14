@@ -6,7 +6,7 @@
 
     <groupId>com.homeofthewizard</groupId>
     <artifactId>spring-bridge-maven-parent</artifactId>
-    <version>1.0.0-alpha</version>
+    <version>1.0.1-alpha</version>
     <packaging>pom</packaging>
 
     <parent>

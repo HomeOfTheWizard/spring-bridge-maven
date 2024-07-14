@@ -7,11 +7,11 @@
     <parent>
         <groupId>com.homeofthewizard</groupId>
         <artifactId>example-spring-extension</artifactId>
-        <version>1.0.0-alpha</version>
+        <version>1.0.1-alpha</version>
     </parent>
 
     <artifactId>my-maven-plugin</artifactId>
-    <version>1.0.0-alpha</version>
+    <version>1.0.1-alpha</version>
     <packaging>maven-plugin</packaging>
 
     <dependencies>
@@ -47,12 +47,12 @@
         <dependency>
             <groupId>com.homeofthewizard</groupId>
             <artifactId>spring-bridge-maven</artifactId>
-            <version>1.0.0-alpha</version>
+            <version>1.0.1-alpha</version>
         </dependency>
         <dependency>
             <groupId>com.homeofthewizard</groupId>
             <artifactId>friends-lib</artifactId>
-            <version>1.0.0-alpha</version>
+            <version>1.0.1-alpha</version>
         </dependency>
     </dependencies>
 

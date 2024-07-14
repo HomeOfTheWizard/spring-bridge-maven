@@ -7,11 +7,11 @@
     <parent>
         <groupId>com.homeofthewizard</groupId>
         <artifactId>example-spring-extension</artifactId>
-        <version>1.0.0-alpha</version>
+        <version>1.0.1-alpha</version>
     </parent>
 
     <artifactId>friends-lib</artifactId>
-    <version>1.0.0-alpha</version>
+    <version>1.0.1-alpha</version>
 
     <dependencies>
         <dependency>

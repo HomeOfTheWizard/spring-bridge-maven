@@ -37,7 +37,7 @@ This will allow our library to work, hence your plugin will be able to use sprin
     <extension>
         <groupId>com.homeofthewizard</groupId>
         <artifactId>guice-exporter-maven-extension</artifactId>
-        <version>1.0.0-alpha</version>
+        <version>1.0.1-alpha</version>
     </extension>
 </extensions>
 ```
@@ -67,7 +67,7 @@ In your plugin's `pom.xml`
         <dependency>
             <groupId>com.homeofthewizard</groupId>
             <artifactId>spring-bridge-maven</artifactId>
-            <version>1.0.0-alpha</version>
+            <version>1.0.1-alpha</version>
         </dependency>
         <!-- your spring library -->
         <dependency>
