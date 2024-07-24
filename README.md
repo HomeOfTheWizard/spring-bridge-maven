@@ -1,4 +1,8 @@
-﻿# spring-bridge-maven
+﻿[![Maven Central](https://img.shields.io/maven-central/v/com.homeofthewizard/spring-bridge-maven?color=orange)](https://search.maven.org/artifact/com.homeofthewizard/spring-bridge-maven)
+[![Reproducible Builds](https://img.shields.io/badge/Reproducible_Builds-ok-green?labelColor=blue)](https://github.com/jvm-repo-rebuild/reproducible-central/blob/master/content/org/apache/maven/maven/README.md)
+![CI Passing](https://github.com/homeofthewizard/spring-bridge-maven-plugin/actions/workflows/maven-build.yml/badge.svg)
+
+# spring-bridge-maven
 
 This project is library that allows injecting Spring Beans into maven's DI system, [Sisu](https://eclipse.dev/sisu/).   
 It is intended to help maven plugin developments by allowing the usage of spring libraries.  
