@@ -1,6 +1,11 @@
 name: Publish to Maven Central
+
 on:
   workflow_dispatch: # Only run when manually started
+
+permissions:
+  contents: write #create tag and release on repo
+
 jobs:
   publish:
     runs-on: ubuntu-latest
