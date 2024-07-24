@@ -1,24 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.homeofthewizard</groupId>
-    <artifactId>spring-bridge-maven-parent</artifactId>
-    <version>1.0.1-alpha</version>
-    <packaging>pom</packaging>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.2.5</version>
     </parent>
-
+    <groupId>com.homeofthewizard</groupId>
+    <artifactId>spring-bridge-maven-parent</artifactId>
+    <version>1.0.1-alpha</version>
+    <packaging>pom</packaging>
     <name>Spring-Maven Bridge</name>
     <description>A Library that allows using Spring Libraries in Maven plugins</description>
     <url>https://github.com/homeofthewizard/spring-bridge-maven</url>
-
     <licenses>
         <license>
             <name>Apache-2.0</name>
@@ -26,13 +20,6 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-
-    <scm>
-        <connection>scm:git:git@github.com:homeofthewizard/spring-bridge-maven</connection>
-        <developerConnection>scm:git:git@github.com:homeofthewizard/spring-bridge-maven.git</developerConnection>
-        <url>https://github.com/homeofthewizard/spring-bridge-maven</url>
-    </scm>
-
     <developers>
         <developer>
             <name>Ozgun OZ</name>
@@ -43,44 +30,37 @@
             <email>dsyer@vmware.com</email>
         </developer>
     </developers>
-
+    <scm>
+        <connection>scm:git:git@github.com:homeofthewizard/spring-bridge-maven</connection>
+        <developerConnection>scm:git:git@github.com:homeofthewizard/spring-bridge-maven.git</developerConnection>
+        <url>https://github.com/homeofthewizard/spring-bridge-maven</url>
+    </scm>
     <properties>
         <java.version>17</java.version>
         <maven.compiler.release>17</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.outputTimestamp>2024-06-15T12:00:00Z</project.build.outputTimestamp>
     </properties>
-
-    <modules>
-        <module>extension</module>
-        <module>library</module>
-    </modules>
-
     <build>
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-plugin-plugin</artifactId>
                     <version>3.13.1</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
                     <version>3.12.1</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>3.1.1</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.13.0</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>3.7.0</version>
                     <configuration>
@@ -88,7 +68,6 @@
                     </configuration>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
                     <version>3.3.1</version>
                 </plugin>
@@ -99,7 +78,6 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-
         <plugins>
             <plugin>
                 <groupId>org.jreleaser</groupId>
@@ -126,18 +104,13 @@
             </plugin>
         </plugins>
     </build>
-
     <profiles>
         <profile>
             <id>publication</id>
-            <properties>
-                <altDeploymentRepository>local::file:./target/staging-deploy</altDeploymentRepository>
-            </properties>
             <build>
                 <defaultGoal>deploy</defaultGoal>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
                         <executions>
                             <execution>
@@ -149,7 +122,6 @@
                         </executions>
                     </plugin>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
                         <executions>
                             <execution>
@@ -165,7 +137,9 @@
                     </plugin>
                 </plugins>
             </build>
+            <properties>
+                <altDeploymentRepository>local::file:./target/staging-deploy</altDeploymentRepository>
+            </properties>
         </profile>
     </profiles>
-
 </project>
